@@ -9,7 +9,7 @@ import './models/albums.dart';
 class DBHelper {
   static Database _db;
   // Create the Table colums
-  static const String TABLE = 'algums';
+  static const String TABLE = 'albums';
   static const String ALBUM_ID = 'albumId';
   static const String ID = 'id';
   static const String TITLE = 'title';
@@ -41,8 +41,8 @@ class DBHelper {
         $ALBUM_ID TEXT, 
         $TITLE TEXT,
         $URL TEXT,
-        $THUMBNAILURL TEXT,
-      )
+        $THUMBNAILURL TEXT
+      );
       ''');
   }
 

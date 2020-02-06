@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import './models/album.dart';
-import './models/albums.dart';
+import 'models/album.dart';
+import 'models/albums.dart';
 
 class Services {
   static List<Album> albums;
@@ -19,9 +19,19 @@ class Services {
         return albums;
       }
     } catch (e) {
+      print(e);
       Albums albums = Albums();
       albums.albums = [];
       return albums;
     }
+  }
+
+  static Albums parsePhotos(String responseBody) {
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    List<Album> albums =
+        parsed.map<Album>((json) => Album.fromJson(json)).toList();
+    Albums a = Albums();
+    a.albums = albums;
+    return a;
   }
 }
